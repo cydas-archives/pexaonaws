@@ -43,18 +43,18 @@ export class BackendStack extends cdk.Stack {
     cfnPrivateSubnet2.addPropertyOverride('CidrBlock', `10.0.22.0/24`)
 
     // RDS
-    const cluster = new rds.DatabaseCluster(this, 'Database', {
-      engine: rds.DatabaseClusterEngine.auroraMysql({ version: rds.AuroraMysqlEngineVersion.VER_2_08_1 }),
-      credentials: rds.Credentials.fromGeneratedSecret('clusteradmin'), // Optional - will default to 'admin' username and generated password
-      instanceProps: {
-        // optional , defaults to t3.medium
-        instanceType: ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.SMALL),
-        vpcSubnets: {
-          subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
-        },
-        vpc,
-      },
-    });
+    // const cluster = new rds.DatabaseCluster(this, 'Database', {
+    //   engine: rds.DatabaseClusterEngine.auroraMysql({ version: rds.AuroraMysqlEngineVersion.VER_2_08_1 }),
+    //   credentials: rds.Credentials.fromGeneratedSecret('clusteradmin'), // Optional - will default to 'admin' username and generated password
+    //   instanceProps: {
+    //     // optional , defaults to t3.medium
+    //     instanceType: ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.SMALL),
+    //     vpcSubnets: {
+    //       subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
+    //     },
+    //     vpc,
+    //   },
+    // });
 
     // ECS
 
