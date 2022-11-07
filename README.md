@@ -1,15 +1,5 @@
-# CDK Sample Project for PEXA
+# AWS CDK Sample Project for PEXA
 
-## CDK
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-### Useful commands
-
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
 
 ## AWS環境について
 
@@ -39,3 +29,54 @@ AWSアカウントは、複数の世界中の物理データセンターを仮�
 - すべてのVPCは基本的に同一のネットワーク構成を持つことで可能な限り環境差異をなくします。
 
 ![](./doc/2_environment.png "環境")
+
+## 事前準備
+ローカル環境に以下の準備をしてください。すでに環境が整っているものについては読み飛ばして大丈夫です。
+
+- [AWS CLI のインストール](https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-chap-getting-started.html)
+- [IAM ユーザーのクレデンシャルの設定](https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/cli-configure-quickstart.html)
+- [Node.js のインストール](https://nodejs.org/ja/)
+- [IDE 環境](https://code.visualstudio.com/) : エディタとコマンドラインツールが使えれば大丈夫です。今回はVSCodeを使います。
+- [AWS CDK v2 のインストール](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html)
+
+## 実行
+**CDK Toolkitをデプロイしておく**
+```
+$ cdk bootstrap
+:
+:
+✅  Environment aws://<AWSアカウント>/ap-northeast-1 bootstrapped (no changes).
+```
+
+**TypeScript コードのコンパイル**
+```
+$ cd pexaonaws
+$ npm run watch
+:
+:
+File change detected. Starting incremental compilation...
+```
+
+**アプリケーションを合成 (Synthesize) する**
+```
+$ cdk synth
+:
+:
+```
+
+**アプリケーションをデプロイする**
+```
+$ cdk deploy
+:
+:
+✨  Total time: 71.23s
+```
+
+### Useful commands
+
+* `npm run build`   compile typescript to js
+* `npm run watch`   watch for changes and compile
+* `npm run test`    perform the jest unit tests
+* `cdk deploy`      deploy this stack to your default AWS account/region
+* `cdk diff`        compare deployed stack with current state
+* `cdk synth`       emits the synthesized CloudFormation template
